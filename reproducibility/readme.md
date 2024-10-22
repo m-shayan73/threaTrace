@@ -87,3 +87,13 @@
     2) My trained models:
 
         ![](./assets/trace_results_1.png)
+
+## **Key Issues:**
+
+1) No requirement.txt
+2) Deprecated modules of pytorch (1.9.1) in torch-geometric 1.4.3
+3) Default permissions of train and test files in ROOT/graphchi-cpp-master/bin/example_apps/ directory are not sufficient to run the code. 
+4) Paper mentions use of Unicorn SC1 and DARPA E5 datasets in evaluation process, however official repository does not mentions them (neither provides their links / running procedure).
+5) No use of seed 
+6) Results do not match those provided in the paper
+7) Given pre-trained models do not seem to be working properly.

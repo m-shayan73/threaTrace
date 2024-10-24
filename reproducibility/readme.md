@@ -65,7 +65,15 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
     1) Pre-trained models:
 
-        ![](./assets/unicorn_results_0.png)
+        The *"threshold_unicorn.txt"* file is not provided with the pre-trained models; this file is otherwise created when we run *"train.py"*. Since threshold is not provided, I used arbitary values of 0 and 1. The results will detoriate further when using values > 1.
+
+        1) Using threshold = 0
+
+            ![](./assets/unicorn_results_0_2_on_th0.png)
+
+        2) Using threshold = 1
+
+            ![](./assets/unicorn_results_0_1_on_th1.png)
 
     2) My trained models:
 
@@ -73,11 +81,15 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
         ![](./assets/unicorn_results_1_2.png)
 
+***Darpa TC #3:*** When using the pre-trained models, copy the groundtruth file of the respective dataset file to *"scripts"* folder and rename it to *"groundtruth_uuid.txt"* **(not mentioned in the official repository)** along with the provided example models.
+
 3) Cadets:
 
     1) Pre-trained models:
 
-        ![]()
+        Before using the pre-trained model, copy the respective mode
+
+        ![](./assets/cadets_results_0.png)
 
     2) My trained models:
 
@@ -87,7 +99,7 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
     1) Pre-trained models:
 
-        ![]()
+        ![](./assets/fivedirection_results_0.png)
 
     2) My trained models:
 
@@ -97,7 +109,7 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
     1) Pre-trained models:
 
-        ![]()
+        ![](./assets/theia_results_0.png)
 
     2) My trained models:
 
@@ -107,7 +119,7 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
     1) Pre-trained models:
 
-        ![]()
+        ![](./assets/trace_results_0.png)
 
     2) My trained models:
 
@@ -118,7 +130,8 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 1) No requirement.txt
 2) Deprecated modules of pytorch (1.9.1) in torch-geometric 1.4.3
 3) Default permissions of train and test files in ROOT/graphchi-cpp-master/bin/example_apps/ directory are not sufficient to run the code. 
-4) Paper mentions use of Unicorn SC1 and DARPA E5 datasets in evaluation process, however official repository does not mentions them (neither provides their links / running procedure).
+4) Paper mentions use of Unicorn SC1 and DARPA TC5 datasets in evaluation process, however official repository has no code regarding them.
 5) No use of seed 
 6) Results do not match those provided in the paper
-7) Given pre-trained models do not seem to be working properly.
+7) Missing threshold_unicorn.txt file when using pre-trained models.
+7) Provided pre-trained models of streamspot and trace do not seem to be working properly.

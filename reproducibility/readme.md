@@ -125,7 +125,7 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 
         ![](./assets/trace_results_1.png)
 
-## **Key Issues:**
+## **Key Issues ([Detailed](https://docs.google.com/document/d/1oo9XkL1k1TVs4eihll5_JVH4ixXcvZ3Sr-55NgiLf5U/edit?usp=sharing)):**
 
 1) No requirement.txt
 2) Deprecated modules of pytorch (1.9.1) in torch-geometric 1.4.3

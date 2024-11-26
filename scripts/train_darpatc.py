@@ -91,12 +91,15 @@ def validate():
 	global loader, device, model, optimizer, data
 
 	show('Start validating')
+
+	## Loads the test data
 	path = '../graphchi-cpp-master/graph_data/darpatc/' + args.scene + '_test.txt'
 	data, feature_num, label_num, adj, adj2, nodeA, _nodeA, _neibor = MyDatasetA(path, 0)
 	dataset = TestDatasetA(data)
 	data = dataset[0]
 	print(data)
 	loader = NeighborSampler(data, size=[1.0, 1.0], num_hops=2, batch_size=b_size, shuffle=False, add_self_loops=True)
+	
 	device = torch.device('cpu')	
 	Net = SAGENet	
 	model1 = Net(feature_num, label_num).to(device)
@@ -114,7 +117,10 @@ def validate():
 		model.load_state_dict(torch.load(model_path))
 		fp = []
 		tn = []
+
+		## In MyDatasetA, train and test masks are set to True for all nodes. So, evaluating on test data in training phase?
 		auc = final_test(data.test_mask)
+		
 		print('fp and fn: ', len(fp), len(tn))
 		_fp = 0
 		_tp = 0
@@ -135,6 +141,8 @@ def validate():
 				_tp += 1
 		print('Precision: ', _tp/(_tp+_fp))
 		print('Recall: ', _tp/len(nodeA))
+		
+		## Returns 1 - Keeps the model - If precision > 0.7 and recall > 0.8
 		if (_tp/len(nodeA) > 0.8) and (_tp/(_tp+_fp+eps) > 0.7):
 			while (1):
 				out_loop += 1
@@ -144,8 +152,11 @@ def validate():
 				os.system('rm ../models/tn_feature_label_'+str(graphId)+'_'+str(out_loop)+'.txt')
 				os.system('rm ../models/fp_feature_label_'+str(graphId)+'_'+str(out_loop)+'.txt')
 			return 1
+		
+		## Returns 0 - Removes the model - If recall < 0.8
 		if (_tp/len(nodeA) <= 0.8):
 			return 0
+		
 		for j in tn:
 			data.test_mask[j] = False
 		

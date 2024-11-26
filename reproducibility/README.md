@@ -42,18 +42,6 @@ Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
 | SC-2    | 0.91      | 0.96   | 0.93     | 0.93    | 24   | 22.5 | 2.5 | 1   | 0.100|
 
 ### DARPA TC #3 and #5 Datasets
-| Dataset/Scene   | Precision | Recall | F-Score | FPR   | TP### StreamSpot Dataset
-Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
-|-----------|--------|----------|---------|------|------|-----|-----|------|
-| 0.98      | 0.99   | 0.99     | 0.99    | 24.8 | 124.5| 0.5 | 0.2 | 0.004|
-
-### Unicorn SC Dataset
-| Dataset | Precision | Recall | Accuracy | F-Score | TP   | TN   | FP  | FN  | FPR  |
-|---------|-----------|--------|----------|---------|------|------|-----|-----|------|
-| SC-1    | 0.93      | 0.98   | 0.95     | 0.95    | 24.5 | 23.15| 1.85| 0.5 | 0.074|
-| SC-2    | 0.91      | 0.96   | 0.93     | 0.93    | 24   | 22.5 | 2.5 | 1   | 0.100|
-
-### DARPA TC #3 and #5 Datasets
 | Dataset/Scene   | Precision | Recall | F-Score | FPR   | TP     | TN      | FP    | FN    |
 |-----------------|-----------|--------|---------|-------|--------|---------|-------|-------|
 | #3/ THEIA       | 0.87      | 0.99   | 0.93    | 0.001 | 25,297 | 3,501,561 | 3,765 | 65    |

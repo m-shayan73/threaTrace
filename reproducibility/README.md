@@ -81,6 +81,8 @@
             chmod 777 ROOT/graphchi-cpp-master/bin/example_apps/*
             ```
 
+    3) threaTrace's repository does not have any instructions about running the code on Unicorn SC1 and DARPA TC5 datasets. To see our attempt to reproduce the results of these datasets, refer to [README-2](./README-2.md).
+
 ## THREATRACE Metrics Mentioned in the Paper
 
 <div align="center">

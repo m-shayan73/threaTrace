@@ -8,23 +8,78 @@
 
 3) Dependencies used: python 3.6.13, pytorch 1.9.1, torch-cluster 1.5.9, torch-geometric 1.4.3, torch-scatter 2.0.9, torch-sparse 0.6.12, torch-spline-conv 1.2.1 (same as mentioned in threaTrace's official repository)
 
-4) torch-geometric 1.4.3 uses string_classes and int_classes modules from torch. These have been deprecated and are not available in Pytorch 1.9.1.
+4) To setup the environment we have used Anaconda 24.9.1. For installation follow the instructions [here](https://docs.anaconda.com/anaconda/install/):
 
-    make the follwing changes in python3.6/site-packages/torch_geometric/data/dataloader.py
+5) Run the following commands (inside conda) to create and run the environment required for threaTrace:
 
-    Original:
+    ```
+    conda create -n threatrace_env python=3.6.13
+    conda activate threatrace_env
+    ```
+    
+6) Install all the dependencies:
 
-    ![](./assets/string_int_error.png)
+    ```
+    conda install -y pytorch==1.9.1 torchvision==0.10.1 torchaudio==0.9.1 cudatoolkit=10.2 psutil -c pytorch
+    pip install -y torch-cluster==1.5.9 torch-scatter==2.0.9 torch-sparse==0.6.12 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
+    pip install torch-geometric==1.4.3    
+    ```
 
-    Fix: 
+7) Alternatively, we have provided a [Dockerfile](./Dockerfile) for ease.
 
-    ![](./assets/string_int_fix.png)
+    1) Docker build:
 
-5) When running the train/test files, the code throws a permission error:
+        ```
+        docker build -t threatrace .
+        ```
 
-    ![](./assets/permission_error.png)
+    2) Navigate to the downloaded / cloned threaTrace repository and run the following command to start the container with the current directory (i.e. threaTrace's repository) mounted (inside the workspace folder of the container)
 
-    Fix: chmod 777 ROOT/graphchi-cpp-master/bin/example_apps/*
+        ```
+        docker run -it -v "$(pwd)":/workspace threatrace
+        ```
+
+    3) To find the current / mounted directory inside the container:
+
+        ```
+        cd workspace
+        ```
+
+8) Follow the instructions mentioned in [threaTrace's readme](https://github.com/threaTrace-detector/threaTrace) to download the datasets and run the code.
+
+
+9) You might encounter the following issues when attempting to run the code:
+
+    1) torch-geometric 1.4.3 uses string_classes and int_classes modules from torch. These have been deprecated and are not available in Pytorch 1.9.1.
+        
+        Make the following changes in anaconda3/envs/threatrace_env/lib/python3.6/site-packages/torch_geometric/data/dataloader.py (path of dataloader.py file of torch geometric library)
+    
+        Original:
+    
+        ![](./assets/string_int_error.png)
+    
+        Fix: 
+    
+        ![](./assets/string_int_fix.png)
+
+        *OR*
+
+        Run the following command (replace the path of dataloader.py file of torch geometric library accordingly):
+
+            ```
+            sed -i 's/from torch._six import container_abcs, string_classes, int_classes/import collections.abc as container_abcs\nstring_classes = str\nint_classes = int/' \
+            /anaconda3/envs/threatrace_env/lib/python3.6/site-packages/torch_geometric/data/dataloader.py
+            ```
+    
+    2) When running the train/test files, the code throws a permission error:
+    
+        ![](./assets/permission_error.png)
+    
+        Fix: run the following command, where ROOT is the path of threaTrace's directory:
+        
+            ```
+            chmod 777 ROOT/graphchi-cpp-master/bin/example_apps/*
+            ```
 
 ## THREATRACE Metrics Mentioned in the Paper
 

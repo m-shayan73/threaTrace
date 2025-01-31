@@ -111,6 +111,7 @@ def MyDatasetA(path, model):
 		f.close()
 	fw.close()
 	fw2.close()
+	
 	x_list = []
 	y_list = []
 	train_mask = []
@@ -121,6 +122,7 @@ def MyDatasetA(path, model):
 			temp_list.append(0)
 		x_list.append(temp_list)
 		y_list.append(0)
+		## Train and Test are same (set to true for all nodes)
 		train_mask.append(True)
 		test_mask.append(True)
 

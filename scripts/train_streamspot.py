@@ -292,6 +292,13 @@ def train_pro():
 	torch.save(model.state_dict(),'../models/'+str(graph_id)+'_'+str(loop_num))
 	loop_num += 1
 
+
+### TrainSet (benign) -> random 75 from each 100 except 300-399 (attack graphs)
+### ValidateSetA (attack) -> random 20 from 300-399 (attack graphs) which might overlap with test set
+### ValidateSetB (benign) -> random 10 from each 100 except 300-399 (attack graphs) which might overlap with test set
+### Testing (benign) -> The 25 graphs not in the TrainSet from each 100 except 300-399 (attack graphs)
+### Testing (attack) -> random 25 from 300-399 (attack graphs)
+
 def splitDataset():
 	global trainSet, validateSetA, validateSetB 
 	trainSet = []

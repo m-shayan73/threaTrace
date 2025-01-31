@@ -29,6 +29,7 @@ batch_size = 5000
 alert_thre = 300
 first_alert = True
 exist_model = []
+
 class TestDataset(InMemoryDataset):
 	def __init__(self, data_list):
 		super(TestDataset, self).__init__('/tmp/TestDataset')
@@ -289,6 +290,9 @@ def train_pro():
 	torch.save(model.state_dict(),'../models/'+str(graph_id)+'_'+str(loop_num))
 	loop_num += 1
 
+
+##### Validate A has 10 attack graphs, all of which are in the test set
+##### Validate B has 50 benign graphs, which could be in the test set
 def splitDataset():
 	global trainSet, validateSetA, validateSetB
 	dataList = []
@@ -443,6 +447,8 @@ def main():
 	global alert_thre
 
 	anomaly_node = {}
+
+	### By default sets ss to 150000, although paper mentions 200000 is best.
 	ss = '150000'
 	if len(sys.argv) > 1: thre = float(sys.argv[3])
 	if len(sys.argv) > 2: ss = sys.argv[2]
@@ -466,10 +472,11 @@ def main():
 		exist_model.append(maxi)
 		loop_num = 0
 		graph_id = str(maxi)
+
+		### Passes the ss to graphchi so subgraph is probably constructed there. (Check)
 		p = Popen('../graphchi-cpp-master/bin/example_apps/train file ../graphchi-cpp-master/graph_data/gdata filetype edgelist stream_file ../graphchi-cpp-master/graph_data/unicornsc/' + graph_id + '.txt batch '+ss, shell=True, stdin=PIPE, stdout=PIPE)
 		
-		
-
+	
 		while (1) :
 			id_map = {}
 			id_map_t = {}
@@ -488,14 +495,18 @@ def main():
 				id_map[line[0]] = i
 				id_map_t[i] = line[0]
 				y.append(line[1])
+				
+				### Mask the test graphs??
 				if line[2] == 1:
 					testcnt += 1
 					train_mask.append(True)
 				else:
 					train_mask.append(False)
+
 				x.append(line[3:len(line)-1])
 				ts[i] = line[len(line)-1] / 1000
 				if ts[i] > this_ts: this_ts = ts[i]
+
 			edge_num = int(p.stdout.readline())
 			for i in range(edge_num):
 				line = bytes.decode(p.stdout.readline())
@@ -507,6 +518,8 @@ def main():
 			y = torch.tensor(y, dtype=torch.long)
 			train_mask = torch.tensor(train_mask, dtype=torch.bool)
 			edge_index = torch.tensor([edge_s, edge_e], dtype=torch.long)
+
+			### Why train and test mask are same???
 			data = Data(x=x, y=y,edge_index=edge_index, test_mask = train_mask, train_mask = train_mask)
 			dataset = TestDataset([data])
 			data = dataset[0]

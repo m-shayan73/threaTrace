@@ -498,11 +498,12 @@ into automatic pass/fail thresholds. `expected_results.json` contains:
 - the manual DARPA no-test-validation observations.
 
 The file is marked `not_vetted` and `informational-only`. Its source notes
-identify transcription inconsistencies in the original README and incorrect
-three-run spreadsheet summary formulas; the affected summary rows are not
-used as reference values. The research training code also does not
-consistently set a random seed. A completed run can therefore expose a
-numerical discrepancy with a reference without becoming an execution failure.
+identify transcription inconsistencies in the original README, incorrect
+three-run spreadsheet summary formulas, and a no-validation metric that is
+inconsistent with its confusion matrix. Those affected spreadsheet values are
+not used as references. The research training code also does not consistently
+set a random seed. A completed run can therefore expose a numerical
+discrepancy with a reference without becoming an execution failure.
 
 ## 9. Long-running execution
 

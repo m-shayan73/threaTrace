@@ -9,6 +9,7 @@
     "Manual baseline observations use the individual runs reported in the threaTrace spreadsheet and reproducibility README.",
     "The no-test-validation observations are transcribed from reproducibility/README-3.md.",
     "The spreadsheet's StreamSpot and Unicorn SC-2 three-run summary formulas do not equal the means of all three displayed rows, so those summary rows are not used here.",
+    "The no-validation spreadsheet contains at least one metric cell that is inconsistent with its confusion matrix (the third Theia run's recall), so it is retained as audit context rather than used as the no-test-validation reference.",
     "Some paper counts in reproducibility/README.md contain transcription inconsistencies. The paper_reference entries use the spreadsheet values that are internally consistent with the reported precision, recall, F1, and FPR."
   ],
   "sources": [

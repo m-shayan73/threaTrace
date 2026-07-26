@@ -490,10 +490,19 @@ The shell exit code is useful for orchestration, but the result JSON provides
 the necessary distinction between `completed` and `expected_failure`.
 
 Observed numerical results are displayed and retained but are not converted
-into automatic pass/fail thresholds. `expected_results.json` is marked
-`not_vetted`, and the research training code does not consistently set a
-random seed. A completed run can therefore expose a numerical discrepancy
-with the paper or manual README without becoming an execution failure.
+into automatic pass/fail thresholds. `expected_results.json` contains:
+
+- paper references for every supported dataset family;
+- one manual observation for each of the 19 supported experiment keys;
+- the documented SC-2 missing-threshold finding; and
+- the manual DARPA no-test-validation observations.
+
+The file is marked `not_vetted` and `informational-only`. Its source notes
+identify transcription inconsistencies in the original README and incorrect
+three-run spreadsheet summary formulas; the affected summary rows are not
+used as reference values. The research training code also does not
+consistently set a random seed. A completed run can therefore expose a
+numerical discrepancy with a reference without becoming an execution failure.
 
 ## 9. Long-running execution
 
@@ -567,8 +576,10 @@ and the stage artifacts before deciding whether the experiment must restart.
   dispatch, and final metric parsing.
 - `experiments.json`: authoritative experiment matrix, expected execution
   behavior, download identifiers, and unsupported explanations.
-- `expected_results.json`: numerical-comparison metadata. It is marked
-  `not_vetted`, so results are reported without an automatic agreement gate.
+- `expected_results.json`: source-attributed paper metrics and manual
+  observations for every supported experiment. It is marked `not_vetted` and
+  `informational-only`, so results are reported without an automatic agreement
+  gate.
 - `runner_common.py`: run lifecycle, safe archive extraction, downloads,
   command logging, input manifest, statuses, reports, and exit codes.
 - `adapter_common.py`: shared upstream setup and GraphChi environment setup.

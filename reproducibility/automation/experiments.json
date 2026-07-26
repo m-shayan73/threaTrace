@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "system": "threaTrace",
+  "experiments": [
+    {
+      "dataset": "streamspot",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "streamspot",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "data_url": "https://raw.githubusercontent.com/sbustreamspot/sbustreamspot-data/master/all.tar.gz"
+    },
+    {
+      "dataset": "streamspot",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "streamspot",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "data_url": "https://raw.githubusercontent.com/sbustreamspot/sbustreamspot-data/master/all.tar.gz"
+    },
+    {
+      "dataset": "sc-1",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "unsupported_reason": "No Unicorn SC-1 pretrained model is supplied. The repository's example_models/unicornsc files are for SC-2."
+    },
+    {
+      "dataset": "sc-1",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "data_repository": "camflow-apt",
+      "expected_execution": {
+        "type": "success"
+      }
+    },
+    {
+      "dataset": "sc-2",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "data_repository": "shellshock-apt",
+      "expected_execution": {
+        "type": "failure",
+        "stage": "evaluate",
+        "signatures": [
+          "threshold_unicorn.txt",
+          "No such file or directory"
+        ],
+        "reason": "The supplied Unicorn SC-2 pretrained artifact omits threshold_unicorn.txt, matching the documented finding."
+      }
+    },
+    {
+      "dataset": "sc-2",
+      "mode": "pretrained",
+      "experiment": "threshold-0",
+      "supported": true,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "data_repository": "shellshock-apt",
+      "threshold_override": 0,
+      "expected_execution": {
+        "type": "success"
+      }
+    },
+    {
+      "dataset": "sc-2",
+      "mode": "pretrained",
+      "experiment": "threshold-1",
+      "supported": true,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "data_repository": "shellshock-apt",
+      "threshold_override": 1,
+      "expected_execution": {
+        "type": "success"
+      }
+    },
+    {
+      "dataset": "sc-2",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "unicornsc",
+      "device_policy": "cpu",
+      "data_repository": "shellshock-apt",
+      "expected_execution": {
+        "type": "success"
+      }
+    },
+    {
+      "dataset": "cadets",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-cadets-e3-official.json.tar.gz",
+          "drive_id": "1AcWrYiBmgAqp7DizclKJYYJJBQbnDMfb"
+        },
+        {
+          "filename": "ta1-cadets-e3-official-2.json.tar.gz",
+          "drive_id": "1EycO23tEvZVnN3VxOHZ7gdbSCwqEZTI1"
+        }
+      ]
+    },
+    {
+      "dataset": "cadets",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-cadets-e3-official.json.tar.gz",
+          "drive_id": "1AcWrYiBmgAqp7DizclKJYYJJBQbnDMfb"
+        },
+        {
+          "filename": "ta1-cadets-e3-official-2.json.tar.gz",
+          "drive_id": "1EycO23tEvZVnN3VxOHZ7gdbSCwqEZTI1"
+        }
+      ]
+    },
+    {
+      "dataset": "cadets",
+      "mode": "scratch",
+      "experiment": "no-test-validation",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-cadets-e3-official.json.tar.gz",
+          "drive_id": "1AcWrYiBmgAqp7DizclKJYYJJBQbnDMfb"
+        },
+        {
+          "filename": "ta1-cadets-e3-official-2.json.tar.gz",
+          "drive_id": "1EycO23tEvZVnN3VxOHZ7gdbSCwqEZTI1"
+        }
+      ]
+    },
+    {
+      "dataset": "fivedirections",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-fivedirections-e3-official-2.json.tar.gz",
+          "drive_id": "1BeP80zUUmm4eZl0UuU43PsKNkl_xgskj"
+        }
+      ]
+    },
+    {
+      "dataset": "fivedirections",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-fivedirections-e3-official-2.json.tar.gz",
+          "drive_id": "1BeP80zUUmm4eZl0UuU43PsKNkl_xgskj"
+        }
+      ]
+    },
+    {
+      "dataset": "fivedirections",
+      "mode": "scratch",
+      "experiment": "no-test-validation",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-fivedirections-e3-official-2.json.tar.gz",
+          "drive_id": "1BeP80zUUmm4eZl0UuU43PsKNkl_xgskj"
+        }
+      ]
+    },
+    {
+      "dataset": "theia",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-theia-e3-official-1r.json.tar.gz",
+          "drive_id": "10cecNtR3VsHfV0N-gNEeoVeB89kCnse5"
+        },
+        {
+          "filename": "ta1-theia-e3-official-6r.json.tar.gz",
+          "drive_id": "1Kadc6CUTb4opVSDE4x6RFFnEy0P1cRp0"
+        }
+      ]
+    },
+    {
+      "dataset": "theia",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-theia-e3-official-1r.json.tar.gz",
+          "drive_id": "10cecNtR3VsHfV0N-gNEeoVeB89kCnse5"
+        },
+        {
+          "filename": "ta1-theia-e3-official-6r.json.tar.gz",
+          "drive_id": "1Kadc6CUTb4opVSDE4x6RFFnEy0P1cRp0"
+        }
+      ]
+    },
+    {
+      "dataset": "theia",
+      "mode": "scratch",
+      "experiment": "no-test-validation",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-theia-e3-official-1r.json.tar.gz",
+          "drive_id": "10cecNtR3VsHfV0N-gNEeoVeB89kCnse5"
+        },
+        {
+          "filename": "ta1-theia-e3-official-6r.json.tar.gz",
+          "drive_id": "1Kadc6CUTb4opVSDE4x6RFFnEy0P1cRp0"
+        }
+      ]
+    },
+    {
+      "dataset": "trace",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-trace-e3-official-1.json.tar.gz",
+          "drive_id": "1GG1aUnPjjzzdbxznVTN8X6oVfA-K4oIV"
+        }
+      ]
+    },
+    {
+      "dataset": "trace",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-trace-e3-official-1.json.tar.gz",
+          "drive_id": "1GG1aUnPjjzzdbxznVTN8X6oVfA-K4oIV"
+        }
+      ]
+    },
+    {
+      "dataset": "trace",
+      "mode": "scratch",
+      "experiment": "no-test-validation",
+      "supported": true,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "expected_execution": {
+        "type": "success"
+      },
+      "raw_archives": [
+        {
+          "filename": "ta1-trace-e3-official-1.json.tar.gz",
+          "drive_id": "1GG1aUnPjjzzdbxznVTN8X6oVfA-K4oIV"
+        }
+      ]
+    },
+    {
+      "dataset": "cadets-e5",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "cadets-e5",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "fivedirections-e5",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "fivedirections-e5",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "theia-e5",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "theia-e5",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "trace-e5",
+      "mode": "pretrained",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    },
+    {
+      "dataset": "trace-e5",
+      "mode": "scratch",
+      "experiment": "baseline",
+      "supported": false,
+      "adapter": "darpa",
+      "device_policy": "cpu",
+      "unsupported_reason": "DARPA TC5 cannot be evaluated from the available artifact: the authoritative raw-file selection is undocumented and the author reported that the malicious-node ground-truth extraction source was lost."
+    }
+  ]
+}

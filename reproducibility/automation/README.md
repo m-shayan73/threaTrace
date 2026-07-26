@@ -104,12 +104,8 @@ python reproducibility/automation/run.py list --json
 The Dockerfile installs the original CPU/CUDA-capable package versions and
 patches the known `torch._six` incompatibility in torch-geometric.
 
-The Dockerfile does not install `gdown`. Install it inside the container before
-using automatic DARPA downloads, or manually provide the DARPA archives:
-
-```bash
-python -m pip install "gdown==4.7.3"
-```
+The Dockerfile installs `gdown==4.7.3`, so automatic DARPA downloads use the
+same downloader version as the Conda setup.
 
 ### CPU and CUDA behavior
 

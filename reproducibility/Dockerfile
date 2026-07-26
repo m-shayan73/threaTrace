@@ -36,8 +36,9 @@ RUN conda create -n threatrace_env python=3.6.13 -y && \
         torch-sparse==0.6.12 \
         torch-spline-conv==1.2.1 \
         -f https://data.pyg.org/whl/torch-1.9.1+cu102.html && \
-    conda run -n threatrace_env pip install torch-geometric==1.4.3 && \
-    conda clean -a
+    conda run -n threatrace_env python -m pip install torch-geometric==1.4.3 && \
+    conda run -n threatrace_env python -m pip install "gdown==4.7.3" && \
+    conda clean -a -y
 
 # Correct the incompatibility issue in the torch-geometric library
 RUN sed -i 's/from torch._six import container_abcs, string_classes, int_classes/import collections.abc as container_abcs\nstring_classes = str\nint_classes = int/' \

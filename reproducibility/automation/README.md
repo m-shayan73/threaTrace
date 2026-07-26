@@ -489,21 +489,8 @@ Runner exit codes are:
 The shell exit code is useful for orchestration, but the result JSON provides
 the necessary distinction between `completed` and `expected_failure`.
 
-Observed numerical results are displayed and retained but are not converted
-into automatic pass/fail thresholds. `expected_results.json` contains:
-
-- paper references for every supported dataset family;
-- one manual observation for each of the 19 supported experiment keys;
-- the documented SC-2 missing-threshold finding; and
-- the manual DARPA no-test-validation observations.
-
-The file is marked `not_vetted` and `informational-only`. Its source notes
-identify transcription inconsistencies in the original README, incorrect
-three-run spreadsheet summary formulas, and a no-validation metric that is
-inconsistent with its confusion matrix. Those affected spreadsheet values are
-not used as references. The research training code also does not consistently
-set a random seed. A completed run can therefore expose a numerical
-discrepancy with a reference without becoming an execution failure.
+Reports contain only the metrics observed during the current run. No numerical
+comparison or agreement classification is performed.
 
 ## 9. Long-running execution
 
@@ -577,10 +564,6 @@ and the stage artifacts before deciding whether the experiment must restart.
   dispatch, and final metric parsing.
 - `experiments.json`: authoritative experiment matrix, expected execution
   behavior, download identifiers, and unsupported explanations.
-- `expected_results.json`: source-attributed paper metrics and manual
-  observations for every supported experiment. It is marked `not_vetted` and
-  `informational-only`, so results are reported without an automatic agreement
-  gate.
 - `runner_common.py`: run lifecycle, safe archive extraction, downloads,
   command logging, input manifest, statuses, reports, and exit codes.
 - `adapter_common.py`: shared upstream setup and GraphChi environment setup.

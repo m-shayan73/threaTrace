@@ -62,7 +62,6 @@ def snapshot_source(context):
         "adapter_unicornsc.py",
         "runner_common.py",
         "experiments.json",
-        "expected_results.json",
         "README.md",
     ):
         copy_path(AUTOMATION_DIR / name, automation_snapshot / name)

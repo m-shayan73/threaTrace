@@ -272,7 +272,6 @@ class RunContext(object):
             "mode": spec["mode"],
             "experiment": spec["experiment"],
             "execution_status": "running",
-            "comparison_status": "not_evaluated",
             "started_at": self.started_at,
             "finished_at": None,
             "repository_commit": commit,
@@ -387,7 +386,6 @@ class RunContext(object):
             "- Mode: `{}`".format(self.spec["mode"]),
             "- Experiment: `{}`".format(self.spec["experiment"]),
             "- Execution status: `{}`".format(self.result["execution_status"]),
-            "- Comparison status: `{}`".format(self.result["comparison_status"]),
             "- Device: `{}`".format(self.result["device"]["actual"]),
             "",
         ]

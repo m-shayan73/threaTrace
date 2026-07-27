@@ -21,8 +21,9 @@
 
     ```
     conda install -y pytorch==1.9.1 torchvision==0.10.1 torchaudio==0.9.1 cudatoolkit=10.2 psutil -c pytorch
-    pip install -y torch-cluster==1.5.9 torch-scatter==2.0.9 torch-sparse==0.6.12 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
-    pip install torch-geometric==1.4.3    
+    python -m pip install torch-cluster==1.5.9 torch-scatter==2.0.9 torch-sparse==0.6.12 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
+    python -m pip install torch-geometric==1.4.3
+    python -m pip install gdown==4.7.3
     ```
 
 7) Alternatively, we have provided a [Dockerfile](./Dockerfile) for ease.
@@ -30,20 +31,17 @@
     1) Docker build:
 
         ```
-        docker build -t threatrace .
+        docker build -f reproducibility/Dockerfile -t threatrace .
         ```
 
     2) Navigate to the downloaded / cloned threaTrace repository and run the following command to start the container with the current directory (i.e. threaTrace's repository) mounted (inside the workspace folder of the container)
 
         ```
-        docker run -it -v "$(pwd)":/workspace threatrace
+        docker run --rm -it -v "$(pwd)":/workspace -w /workspace threatrace bash
         ```
 
-    3) To find the current / mounted directory inside the container:
-
-        ```
-        cd workspace
-        ```
+    The container opens directly in `/workspace`, which contains the mounted
+    threaTrace repository.
 
 8) Follow the instructions mentioned in [threaTrace's readme](https://github.com/threaTrace-detector/threaTrace) to download the datasets and run the code.
 

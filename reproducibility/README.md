@@ -21,9 +21,9 @@
 
     ```
     conda install -y pytorch==1.9.1 torchvision==0.10.1 torchaudio==0.9.1 cudatoolkit=10.2 psutil -c pytorch
-    pip install torch-cluster==1.5.9 torch-scatter==2.0.9 torch-sparse==0.6.12 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
-    pip install torch-geometric==1.4.3    
-    pip install gdown==4.7.3
+    python -m pip install torch-cluster==1.5.9 torch-scatter==2.0.9 torch-sparse==0.6.12 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
+    python -m pip install torch-geometric==1.4.3
+    python -m pip install gdown==4.7.3
     ```
 
 7) Alternatively, we have provided a [Dockerfile](./Dockerfile) for ease.

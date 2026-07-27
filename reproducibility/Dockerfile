@@ -30,7 +30,7 @@ RUN conda create -n threatrace_env python=3.6.13 -y && \
         cudatoolkit=10.2 \
         psutil \
         -c pytorch && \
-    conda run -n threatrace_env pip install \
+    conda run -n threatrace_env python -m pip install \
         torch-cluster==1.5.9 \
         torch-scatter==2.0.9 \
         torch-sparse==0.6.12 \
